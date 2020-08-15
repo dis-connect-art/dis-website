@@ -1,5 +1,5 @@
 const francescaGotti = ({ router }) => {
-  return <section>connect</section>;
+  return <section></section>;
 };
 
 export default francescaGotti;

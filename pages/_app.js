@@ -1,34 +1,50 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import "../styles/globals.css";
-import {
-  motion,
-  AnimatePresence,
-  useTransform,
-  useViewportScroll,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Circle from "../components/Circle";
 import Navigation from "../components/Navigation";
 import getConfig from "next/config";
 
-const mainVariants = {
+const bgImageVars = {
   enter: (direction) => {
     let x = 0;
-    if (direction > 0) x = 100;
-    if (direction < 0) x = -100;
+    if (direction === "next") x = "-100%";
+    if (direction === "back") x = "100%";
     return {
       x: x,
-      opacity: 0,
     };
   },
   center: {
     x: 0,
-    opacity: 1,
   },
   exit: (direction) => {
     let x = 0;
-    if (direction > 0) x = 1000;
-    if (direction < 0) x = -1000;
+    if (direction === "next") x = "100%";
+    if (direction === "back") x = "-100%";
+    return {
+      x: x,
+    };
+  },
+};
+
+const mainVars = {
+  enter: (direction) => {
+    let x = 0;
+    if (direction === "next") x = -5;
+    if (direction === "back") x = 5;
+    return {
+      x: x,
+    };
+  },
+  center: {
+    x: 0,
+  },
+  exit: (direction) => {
+    let x = 0;
+    if (direction === "next") x = 5;
+    if (direction === "back") x = -5;
+
     return {
       x: x,
       opacity: 0,
@@ -38,33 +54,14 @@ const mainVariants = {
 
 const { allRoutes } = getConfig().publicRuntimeConfig;
 
-// https://codesandbox.io/s/framer-motion-image-gallery-pqvx3
-// const swipeConfidenceThreshold = 5000;
-// const swipePower = (offset, velocity) => Math.abs(offset) * velocity;
-
 function MyApp({ Component, pageProps, router }) {
-  const [history, setHistory] = useState([]);
   const [routeIndex, setRouteIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [direction, setDirection] = useState("next");
 
   useEffect(() => {
-    setHistory((prevHistory) => [...prevHistory, router.route]);
+    setRouteIndex(allRoutes.indexOf(router.route));
   }, [router.route]);
 
-  useEffect(() => {
-    let currentRouteIndex = allRoutes.indexOf(router.route);
-    let lastRouteIndex = currentRouteIndex;
-    if (history.length > 1)
-      lastRouteIndex = allRoutes.indexOf(history[history.length - 2]);
-
-    if (currentRouteIndex === lastRouteIndex) setDirection(0);
-    if (currentRouteIndex > lastRouteIndex) setDirection(1);
-    if (currentRouteIndex < lastRouteIndex) setDirection(-1);
-
-    setRouteIndex(currentRouteIndex);
-  }, [history]);
-
-  console.log("main direction ", direction);
   return (
     <motion.main
       className="main"
@@ -77,8 +74,10 @@ function MyApp({ Component, pageProps, router }) {
 
         if (offset.y < -swipeThreshold && routeIndex < allRoutes.length - 1) {
           newDirection = +1;
+          setDirection("next");
         } else if (offset.y > swipeThreshold && routeIndex > 0) {
           newDirection = -1;
+          setDirection("back");
         }
 
         if (newDirection) {
@@ -96,24 +95,34 @@ function MyApp({ Component, pageProps, router }) {
 
       <Circle direction={direction} route={router.route} />
 
-      <AnimatePresence initial={false}>
+      <AnimatePresence>
         <motion.img
           key={router.route}
           className="background-img"
           draggable="false"
           src={"assets/bg-" + router.route.replace("/", "") + ".jpg"}
           custom={direction}
-          variants={mainVariants}
+          variants={bgImageVars}
           initial="enter"
           animate="center"
           exit="exit"
-          // transition={{
-          //   x: { type: "spring", stiffness: 300, damping: 200 },
-          //   opacity: { duration: 1 },
-          //   duration: 1,
-          // }}
+          transition={{ type: "tween" }}
         ></motion.img>
-        <Component {...pageProps} router={router} />
+      </AnimatePresence>
+
+      <AnimatePresence exitBeforeEnter>
+        <motion.div
+          key={router.route}
+          draggable="false"
+          custom={direction}
+          variants={mainVars}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ type: "tween" }}
+        >
+          <Component {...pageProps} router={router} />
+        </motion.div>
       </AnimatePresence>
     </motion.main>
   );

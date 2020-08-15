@@ -75,7 +75,7 @@ const Navigation = ({ route }) => {
         }
 
         .active-dot {
-          border: 3px solid red;
+          background: red;
         }
       `}</style>
     </nav>
