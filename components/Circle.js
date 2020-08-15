@@ -1,52 +1,57 @@
 import { motion, AnimatePresence } from "framer-motion";
+import getConfig from "next/config";
+
+const { allRoutes } = getConfig().publicRuntimeConfig;
 
 const circleVariants = {
   initial: (direction) => {
     let y = 0;
-    if (direction > 0) y = 100;
-    if (direction < 0) y = -100;
+    if (direction === "next") y = 200;
+    if (direction === "back") y = -200;
     return {
       y: y,
-      opacity: 0,
     };
   },
   animate: {
     y: 0,
-    opacity: 1,
   },
   exit: (direction) => {
     let y = 0;
-    if (direction > 0) y = -100;
-    if (direction < 0) y = 100;
+    if (direction === "next") y = -200;
+    if (direction === "back") y = 200;
     return {
       y: y,
-      opacity: 0,
     };
   },
 };
 
+const legitRoutes = [allRoutes[0], allRoutes[1], allRoutes[2], allRoutes[3]];
+
 const Circle = ({ direction, route }) => {
-  console.log("circle direction ", direction);
   let DIS = <h3>DIS-</h3>;
-  if (route === "/francesco-romero") DIS = <img src="/assets/fg-3" />;
+  if (route === allRoutes[3]) DIS = <img src="/assets/fg-3.png" />;
 
   let bgColor;
   switch (route) {
-    case "/":
+    case allRoutes[0]:
       bgColor = "transparent";
       break;
-    case "/omer-ipekci":
+    case allRoutes[2]:
       bgColor = "pink";
       break;
-    case "/francesca-gotti":
-    case "/francesco-romero":
     default:
-      bgColor = "yellow";
+      bgColor = "#e3e839";
   }
 
   return (
-    <div id="circle" style={{ backgroundColor: bgColor }}>
-      <AnimatePresence exitBeforeEnter>
+    <div
+      id="circle"
+      style={{
+        display: legitRoutes.indexOf(route) != -1 ? "block" : "none",
+        backgroundColor: bgColor,
+      }}
+    >
+      <AnimatePresence initial={false} exitBeforeEnter>
         <motion.div
           key={route}
           custom={direction}
@@ -55,6 +60,7 @@ const Circle = ({ direction, route }) => {
           animate="animate"
           exit="exit"
           className="circle-text"
+          transition={{ type: "tween" }}
         >
           {DIS}
         </motion.div>
@@ -70,23 +76,27 @@ const Circle = ({ direction, route }) => {
           border-radius: 50%;
           transform: translate(-50%, -50%);
           z-index: 1;
+          overflow: hidden;
         //   display: flex;
         //   justify-content: center;
         //   align-items: center;
 
         }
 
-        h3, img {
+        h3 {
             position: absolute;
             top: -25px;
             left: 0%;
-        }
-
-        h3 {
             width: 100%;
             text-align: center;
             font-size: 5rem;
-          }
+        }
+
+        img {
+          position: absolute;
+          width: 200px;
+          height: 200px;
+        }
       `}</style>
     </div>
   );

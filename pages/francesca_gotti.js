@@ -19,7 +19,7 @@ const francescaGotti = ({ router }) => {
       <style jsx>{`
         article {
           width: 150px;
-          font-weight: 400;
+          font-weight: 500;
           margin: 1rem 6rem;
         }
 
