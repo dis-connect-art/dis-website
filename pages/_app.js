@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Head from "next/head";
 import "../styles/globals.css";
 import { motion, AnimatePresence } from "framer-motion";
@@ -96,6 +96,7 @@ function MyApp({ Component, pageProps, router }) {
   const [direction, setDirection] = useState("next");
   const windowSize = useWindowSize();
   const [device, setDevice] = useState("mobile");
+  const yScrollContainer = useRef();
 
   useEffect(() => {
     if (windowSize.width < breakpoints.mobile) {
@@ -112,7 +113,7 @@ function MyApp({ Component, pageProps, router }) {
   }, [router.route]);
 
   return (
-    <>
+    <div ref={yScrollContainer}>
       <Head>
         <title>Disproof</title>
         <link rel="icon" href="/favicon.ico" />
@@ -122,12 +123,16 @@ function MyApp({ Component, pageProps, router }) {
       <motion.main
         style={{ backgroundColor: mobileBGColors[router.route] }}
         className="main"
+        pan="y"
+        onPan={(e, { offset }) => {
+          document.body.scrollBy(0, -offset.y);
+        }}
         drag="true"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={1}
-        onDragEnd={(e, { offset }) => {
+        onPanEnd={(e, { offset }) => {
           let newDirection;
-          let swipeThreshold = 150;
+          let swipeThreshold = 120;
 
           if (offset.x < -swipeThreshold && routeIndex < allRoutes.length - 1) {
             newDirection = +1;
@@ -180,7 +185,7 @@ function MyApp({ Component, pageProps, router }) {
           </motion.div>
         </AnimatePresence>
       </motion.main>
-    </>
+    </div>
   );
 }
 

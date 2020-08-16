@@ -62,8 +62,6 @@ const francescaGotti = ({ router, device }) => {
             width: 100%;
             padding: 0 2.5rem;
             margin: 5rem auto;
-            min-height: 100vh;
-            box-sizing: border-box;
           }
 
           div {

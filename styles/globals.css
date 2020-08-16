@@ -10,7 +10,6 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   width: 100vw;
   height: 100vh;
-  box-sizing: border-box;
   overflow-x: hidden;
   overscroll-behavior: none;
   position: relative;
@@ -55,16 +54,17 @@ a {
 }
 
 @media screen and (max-width: 480px) {
-  body {
-    overflow-y: scroll;
+  .main {
+    height: auto;
+    min-height: 100vh;
   }
 
   .background-div img {
     opacity: 0.2;
   }
 
-  .main {
+  /* .main {
     height: auto;
     min-height: 100%;
-  }
+  } */
 }
