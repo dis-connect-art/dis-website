@@ -80,6 +80,7 @@ const Circle = ({ direction, route }) => {
         }
         
         .circle h3 {
+          user-select: none;
           position: absolute;
           top: -25px;
           left: 0%;

@@ -50,6 +50,13 @@ const francescaGotti = ({ router }) => {
         article {
           width: 220px;
         }
+
+        @media screen and (max-width: 480px) {
+          article {
+            box-sizing: border-box;
+            min-height: 100vh;
+          }
+        }
       `}</style>
     </section>
   );
