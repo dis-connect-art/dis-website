@@ -1,12 +1,9 @@
-import Link from "next/link";
-import Navigation from "../components/Navigation";
-
-// TODO: Change the icon in the head
+import styles from "../styles/SharedStyles.module.css";
 
 export default function Home({ router }) {
   return (
     <section>
-      <article>
+      <article className={styles.article}>
         In 2019
         <br />
         <br />
@@ -29,8 +26,6 @@ export default function Home({ router }) {
       <style jsx>{`
         article {
           width: 220px;
-          font-weight: 500;
-          margin: 1rem 6rem;
         }
       `}</style>
     </section>

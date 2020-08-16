@@ -6,8 +6,8 @@ const { allRoutes } = getConfig().publicRuntimeConfig;
 const circleVariants = {
   initial: (direction) => {
     let y = 0;
-    if (direction === "next") y = 200;
-    if (direction === "back") y = -200;
+    if (direction === "back") y = 200;
+    if (direction === "next") y = -200;
     return {
       y: y,
     };
@@ -17,8 +17,8 @@ const circleVariants = {
   },
   exit: (direction) => {
     let y = 0;
-    if (direction === "next") y = -200;
-    if (direction === "back") y = 200;
+    if (direction === "back") y = -200;
+    if (direction === "next") y = 200;
     return {
       y: y,
     };
@@ -45,7 +45,7 @@ const Circle = ({ direction, route }) => {
 
   return (
     <div
-      id="circle"
+      className="circle"
       style={{
         display: legitRoutes.indexOf(route) != -1 ? "block" : "none",
         backgroundColor: bgColor,
@@ -67,7 +67,7 @@ const Circle = ({ direction, route }) => {
       </AnimatePresence>
 
       <style>{`
-        #circle {
+        .circle {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -77,25 +77,52 @@ const Circle = ({ direction, route }) => {
           transform: translate(-50%, -50%);
           z-index: 1;
           overflow: hidden;
-        //   display: flex;
-        //   justify-content: center;
-        //   align-items: center;
-
         }
-
-        h3 {
-            position: absolute;
-            top: -25px;
-            left: 0%;
-            width: 100%;
-            text-align: center;
-            font-size: 5rem;
+        
+        .circle h3 {
+          position: absolute;
+          top: -25px;
+          left: 0%;
+          width: 100%;
+          text-align: center;
+          font-size: 5rem;
         }
-
-        img {
+        
+        .circle img {
           position: absolute;
           width: 200px;
           height: 200px;
+        }
+        
+        @media screen and (max-width: 480px) {
+          .circle {
+            position: fixed;
+            /* top: calc(100vh - 80px - 1rem);
+                left: calc(100vw - 80px - 1rem); */
+            top: auto;
+            left: auto;
+            right: 1rem;
+            bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            transform: translate(0, 0);
+            z-index: 1;
+            overflow: hidden;
+          }
+        
+          .circle h3 {
+            top: -0.7rem;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+          }
+        
+          .circle img {
+            width: 80px;
+            height: 80px;
+          }
         }
       `}</style>
     </div>

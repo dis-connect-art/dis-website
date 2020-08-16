@@ -1,51 +1,88 @@
 import Link from "next/link";
 import getConfig from "next/config";
+import { motion } from "framer-motion";
 
 const { allRoutes } = getConfig().publicRuntimeConfig;
+
+const container = {
+  hidden: { opacity: 1 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      type: "tween",
+    },
+  },
+};
+
+const item = {
+  hidden: { x: "-100%" },
+  show: { x: 0 },
+};
 
 const Navigation = ({ route }) => {
   return (
     <nav>
-      <ul>
+      <motion.ul variants={container} initial="hidden" animate="show">
         <Link href={allRoutes[0]}>
-          <li>
+          <motion.li variants={item}>
             <div
               className={
-                route === allRoutes[0]
-                  ? "intro circle active-dot"
-                  : "intro circle"
+                route === allRoutes[0] ? "intro dot active-dot" : "intro dot"
               }
             ></div>
-          </li>
+          </motion.li>
         </Link>
         <Link href={allRoutes[1]}>
-          <li className={route === allRoutes[1] && "active"}>1</li>
+          <motion.li
+            variants={item}
+            className={route === allRoutes[1] && "active"}
+          >
+            1
+          </motion.li>
         </Link>
         <Link href={allRoutes[2]}>
-          <li className={route === allRoutes[2] && "active"}>2</li>
+          <motion.li
+            variants={item}
+            className={route === allRoutes[2] && "active"}
+          >
+            2
+          </motion.li>
         </Link>
         <Link href={allRoutes[3]}>
-          <li className={route === allRoutes[3] && "active"}>3</li>
+          <motion.li
+            variants={item}
+            className={route === allRoutes[3] && "active"}
+          >
+            3
+          </motion.li>
         </Link>
         <Link href={allRoutes[4]}>
-          <li className={route === allRoutes[4] && "active"}>+</li>
+          <motion.li
+            variants={item}
+            className={route === allRoutes[4] && "active"}
+          >
+            +
+          </motion.li>
         </Link>
         <Link href={allRoutes[5]}>
-          <li>
+          <motion.li variants={item}>
             <div
               className={
-                route === allRoutes[5]
-                  ? "outro circle active-dot"
-                  : "outro circle"
+                route === allRoutes[5] ? "outro dot active-dot" : "outro dot"
               }
             ></div>
-          </li>
+          </motion.li>
         </Link>
-      </ul>
-      <style jsx>{`
+      </motion.ul>
+      <style>{`
         nav {
           position: absolute;
           z-index: 1;
+        }
+
+        ul {
+          margin: 1rem 0;
         }
 
         li {
@@ -53,10 +90,10 @@ const Navigation = ({ route }) => {
           font-size: 2rem;
           display: flex;
           flex-direction: column;
-          padding: 0.25rem 2rem;
+          padding: 0.5rem 2rem;
         }
 
-        .circle {
+        .dot {
           width: 20px;
           height: 20px;
           border-radius: 50%;
@@ -76,6 +113,26 @@ const Navigation = ({ route }) => {
 
         .active-dot {
           background: red;
+        }
+
+        @media screen and (max-width: 480px) {
+          nav {
+            width: 100%;
+            text-align: center;
+          }
+
+          ul {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+          }
+
+          li {
+            font-size: 1.5rem;
+            display: inline-block;
+            padding: 0;
+          }
         }
       `}</style>
     </nav>

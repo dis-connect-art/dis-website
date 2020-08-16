@@ -1,4 +1,4 @@
-const francescaGotti = ({ router }) => {
+const francescaGotti = ({ router, device }) => {
   return (
     <section>
       <article>
@@ -8,7 +8,7 @@ const francescaGotti = ({ router }) => {
         DIS- was created by:
         <div>
           <p>
-            Francesca Gotti
+            <b>Francesca Gotti</b>
             <br />
             <br />
             Artist & Designer
@@ -20,7 +20,7 @@ const francescaGotti = ({ router }) => {
             @Gottistudio
           </p>
           <p>
-            Omer Ipekci
+            <b>Omer Ipekci</b>
             <br />
             <br />
             Artist & Perfumer
@@ -32,7 +32,7 @@ const francescaGotti = ({ router }) => {
             @PEKJI_PARFUM
           </p>
           <p>
-            Francesco Romero
+            <b>Francesco Romero</b>
             <br />
             <br />
             Artist & Photographer
@@ -49,13 +49,28 @@ const francescaGotti = ({ router }) => {
         article {
           padding: 3rem 0 0 10rem;
           width: 800px;
-          font-weight: 500;
         }
 
         div {
           margin-top: 1em;
           display: flex;
           justify-content: space-between;
+        }
+
+        @media screen and (max-width: 480px) {
+          article {
+            width: 100%;
+            padding: 0 2.5rem;
+            margin: 5rem auto;
+          }
+
+          div {
+            display: block;
+          }
+
+          p {
+            margin: 2rem 0;
+          }
         }
       `}</style>
     </section>

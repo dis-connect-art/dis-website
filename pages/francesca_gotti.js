@@ -1,7 +1,9 @@
+import styles from "../styles/SharedStyles.module.css";
+
 const francescaGotti = ({ router }) => {
   return (
     <section>
-      <article>
+      <article className={styles.article}>
         DIS-PROOF
         <br />
         <br />
@@ -19,13 +21,6 @@ const francescaGotti = ({ router }) => {
       <style jsx>{`
         article {
           width: 150px;
-          font-weight: 500;
-          margin: 1rem 6rem;
-        }
-
-        span {
-          font-weight: 500;
-          color: red;
         }
       `}</style>
     </section>
