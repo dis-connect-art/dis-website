@@ -36,7 +36,7 @@ const Navigation = ({ route }) => {
         <Link href={allRoutes[1]}>
           <motion.li
             variants={item}
-            className={route === allRoutes[1] && "active"}
+            className={route === allRoutes[1] ? "active" : ""}
           >
             1
           </motion.li>
@@ -44,7 +44,7 @@ const Navigation = ({ route }) => {
         <Link href={allRoutes[2]}>
           <motion.li
             variants={item}
-            className={route === allRoutes[2] && "active"}
+            className={route === allRoutes[2] ? "active" : ""}
           >
             2
           </motion.li>
@@ -52,7 +52,7 @@ const Navigation = ({ route }) => {
         <Link href={allRoutes[3]}>
           <motion.li
             variants={item}
-            className={route === allRoutes[3] && "active"}
+            className={route === allRoutes[3] ? "active" : ""}
           >
             3
           </motion.li>
@@ -60,7 +60,7 @@ const Navigation = ({ route }) => {
         <Link href={allRoutes[4]}>
           <motion.li
             variants={item}
-            className={route === allRoutes[4] && "active"}
+            className={route === allRoutes[4] ? "active" : ""}
           >
             +
           </motion.li>
