@@ -1,7 +1,9 @@
+import styles from "../styles/SharedStyles.module.css";
+
 const francescaGotti = ({ router }) => {
   return (
     <section>
-      <article>
+      <article className={styles.article}>
         @Omer Ipekci created three “perfumes”:
         <br />
         <br />
@@ -27,10 +29,10 @@ const francescaGotti = ({ router }) => {
         <br />
         <b>Discount box</b>
         <br />
-        All three perfumes in circular Korrvu
+        All three perfumes in circular Korrvu packaging
         <br />
         <br />
-        packaging 400 Eur, 30 Pieces
+        400 Eur, 30 Pieces
         <br />
         <span>BUY</span>
         <br />
@@ -47,13 +49,6 @@ const francescaGotti = ({ router }) => {
       <style jsx>{`
         article {
           width: 220px;
-          font-weight: 500;
-          margin: 1rem 6rem;
-        }
-
-        span {
-          font-weight: 500;
-          color: red;
         }
       `}</style>
     </section>

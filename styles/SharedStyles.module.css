@@ -1,0 +1,17 @@
+.article {
+  width: 260px;
+  margin: 1.5rem 6rem;
+  font-weight: 500;
+}
+
+.article span {
+  color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .article {
+    min-width: 100%;
+    padding: 0 2.5rem;
+    margin: 5rem auto;
+  }
+}

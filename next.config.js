@@ -14,5 +14,9 @@ module.exports = {
       "/connect",
       "/outro",
     ],
+    breakpoints: {
+      mobile: 480,
+      tablet: 758,
+    },
   },
 };

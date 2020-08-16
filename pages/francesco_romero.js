@@ -1,8 +1,9 @@
+import styles from "../styles/SharedStyles.module.css";
+
 const francescaGotti = ({ router }) => {
   return (
     <section>
-      {" "}
-      <article>
+      <article className={styles.article}>
         @Francesco Romero created a photo book during this disconnected process
         as the visual layer of the collaboration.
         <br />
@@ -24,14 +25,7 @@ const francescaGotti = ({ router }) => {
       </article>
       <style jsx>{`
         article {
-          width: 260px;
-          font-weight: 500;
-          margin: 1rem 6rem;
-        }
-
-        span {
-          font-weight: 500;
-          color: red;
+          width: 260px; /* overwrite stdArticle width */
         }
       `}</style>
     </section>
