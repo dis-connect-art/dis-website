@@ -12,7 +12,7 @@ body {
   height: 100vh;
   box-sizing: border-box;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overscroll-behavior: none;
   position: relative;
 }
 
@@ -54,11 +54,6 @@ a {
   top: 0px;
 }
 
-/* .std-article {
-  margin: 1.5rem 6rem;
-  font-weight: 500;
-} */
-
 @media screen and (max-width: 480px) {
   body {
     overflow-y: scroll;
@@ -67,12 +62,6 @@ a {
   .background-div img {
     opacity: 0.2;
   }
-
-  /* .std-article {
-    min-width: 100%;
-    padding: 0 2.5rem;
-    margin: 5rem auto;
-  } */
 
   .main {
     height: auto;
