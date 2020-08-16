@@ -97,8 +97,6 @@ const Circle = ({ direction, route }) => {
         @media screen and (max-width: 480px) {
           .circle {
             position: fixed;
-            /* top: calc(100vh - 80px - 1rem);
-                left: calc(100vw - 80px - 1rem); */
             top: auto;
             left: auto;
             right: 1rem;
