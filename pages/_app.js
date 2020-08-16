@@ -132,7 +132,7 @@ function MyApp({ Component, pageProps, router }) {
         dragElastic={1}
         onPanEnd={(e, { offset }) => {
           let newDirection;
-          let swipeThreshold = 120;
+          let swipeThreshold = 80;
 
           if (offset.x < -swipeThreshold && routeIndex < allRoutes.length - 1) {
             newDirection = +1;
