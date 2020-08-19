@@ -6,9 +6,8 @@ import Circle from "../components/Circle";
 import Navigation from "../components/Navigation";
 import getConfig from "next/config";
 
-// TODO: Connect
+// TODO: Connect-mobile
 // TODO: Tablet styling
-// TODO: Buy
 // TODO: Links
 // TODO: Arrows?
 
