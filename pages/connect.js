@@ -1,8 +1,6 @@
 import styles from "../styles/SharedStyles.module.css";
 import { useState, useRef, useEffect } from "react";
 
-// TODO: Mobile
-
 const PRODUCTS = {
   gleb: "DIS-1,2,3 perfumes, (Glebanite) = X Eur",
   korv: "DIS-1,2,3 perfumes (Korrvu) = Z Eur",
@@ -20,6 +18,8 @@ const francescaGotti = ({ router }) => {
   const [order, setOrder] = useState(PRODUCTS.gleb);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -36,14 +36,17 @@ const francescaGotti = ({ router }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsProcessing(true);
 
     if (!name) {
+      setIsProcessing(false);
       setError("Name Required");
       nameRef.current.style.border = "1px solid red";
       return;
     }
 
     if (!email) {
+      setIsProcessing(false);
       setError("Email Required");
       emailRef.current.style.border = "1px solid red";
       return;
@@ -57,12 +60,20 @@ const francescaGotti = ({ router }) => {
       .then((res) => res.json())
       .then((res) => {
         if (res.success) {
-          window.location.href = "/connect";
+          setIsProcessing(false);
+          setIsSuccess(true);
         } else {
-          alert("Failed!");
+          alert(
+            "The request failed for an unknown reason! We are sorry for this. Please feel free to send us a message via dis.connect.art@fmail.com if you continue to experience this issue"
+          );
+          setIsProcessing(false);
         }
       })
-      .catch((e) => alert(e));
+      .catch((e) =>
+        alert(
+          "There was an error in sending your request! We are sorry for this. Please feel free to send us a message via dis.connect.art@fmail.com if you continue to experience this issue"
+        )
+      );
   };
 
   return (
@@ -74,6 +85,27 @@ const francescaGotti = ({ router }) => {
         <img src="/assets/product-glebanite.jpg" alt="" />
         <img src="/assets/product-korrvu.jpg" alt="" />
       </div>
+
+      {isSuccess && (
+        <div className="success-box">
+          <span
+            onClick={() => {
+              setIsSuccess(false);
+              window.location.href = "/connect"; // refresh the page to reset all state
+            }}
+          >
+            ✖︎
+          </span>
+          <h4>SUCCESS!</h4>
+          <p>
+            Thanks! Your request has been sent to{" "}
+            <a href="mailto:dis.connect.art@gmail.com">
+              dis.connect.art@gmail.com
+            </a>
+            ! We will get in touch soon.
+          </p>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit}>
         <input
@@ -115,11 +147,47 @@ const francescaGotti = ({ router }) => {
           placeholder="type your message."
           onChange={(e) => setMessage(e.target.value.trim())}
         ></textarea>
-        <button type="submit">Make A Request</button>
+        <button type="submit" disabled={isProcessing || isSuccess}>
+          {isProcessing ? "Processing..." : "Make A Request"}
+        </button>
         {error && <div className="error-box">{error}</div>}
       </form>
 
       <style jsx>{`
+        .success-box {
+          position: absolute;
+          z-index: 1000;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 600px;
+          max-width: 90%;
+          text-align: center;
+          background: #fafafa;
+          border: 1px solid black;
+          padding: 2rem;
+        }
+
+        .success-box a {
+          color: indianred;
+        }
+
+        .success-box h4 {
+          margin-top: 0;
+        }
+
+        .success-box span {
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+          color: indianred;
+          border: 1px solid indianred;
+          border-radius: 50%;
+          position: absolute;
+          right: 1rem;
+          top: 1rem;
+        }
+
         .product-pics {
           width: 60%;
           margin: 0 auto;
@@ -203,12 +271,17 @@ const francescaGotti = ({ router }) => {
           float: right;
         }
 
+        button:disabled {
+          background-color: lightgray; /* lightpink */
+          color: darkgray;
+        }
+
         .error-box {
           font-weight: 600;
           color: indianred;
         }
 
-        @media screen and (max-width: 720px) {
+        @media screen and (max-width: 480px) {
           article {
             margin: 4.5rem 0 1.5rem 0;
           }
