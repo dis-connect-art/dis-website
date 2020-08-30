@@ -80,14 +80,14 @@ const francescaGotti = ({ router }) => {
           ref={nameRef}
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder="name"
           onChange={(e) => setName(e.target.value.trim())}
         />
         <input
           ref={emailRef}
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="email"
           onChange={(e) => setEmail(e.target.value.toLowerCase().trim())}
         />
         <div className="select-wrapper">
@@ -112,7 +112,7 @@ const francescaGotti = ({ router }) => {
           id="message"
           cols="1"
           rows="8"
-          placeholder="Type your message."
+          placeholder="type your message."
           onChange={(e) => setMessage(e.target.value.trim())}
         ></textarea>
         <button type="submit">Make A Request</button>
@@ -206,6 +206,23 @@ const francescaGotti = ({ router }) => {
         .error-box {
           font-weight: 600;
           color: indianred;
+        }
+
+        @media screen and (max-width: 720px) {
+          article {
+            margin: 4.5rem 0 1.5rem 0;
+          }
+
+          .product-pics,
+          form {
+            width: 90%;
+            margin: 1rem auto;
+          }
+
+          form * {
+            width: 100%;
+            font-size: 0.8rem;
+          }
         }
       `}</style>
     </section>
