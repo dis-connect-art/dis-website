@@ -1,10 +1,19 @@
 import styles from "../styles/SharedStyles.module.css";
+import Link from "next/link";
+// TODO: Buy
 
 const francescaGotti = ({ router }) => {
   return (
     <section>
       <article className={styles.article}>
-        @Omer Ipekci created three “perfumes”:
+        <a
+          href="https://www.instagram.com/omer_pekji/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @Omer Ipekci
+        </a>{" "}
+        created three “perfumes”:
         <br />
         <br />
         DIS-1 (Decay)
@@ -19,12 +28,24 @@ const francescaGotti = ({ router }) => {
         <br />
         <b>Display box</b>
         <br />
-        All three perfumes in handmade case designed by @Francesca Gotti.
+        All three perfumes in handmade case designed by{" "}
+        <a
+          href="https://www.instagram.com/francesca.gotti/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @Francesca Gotti
+        </a>
+        .
         <br />
         <br />
         650Eur, 15 Pieces
         <br />
-        <span>BUY</span>
+        <Link href="/connect">
+          <a>
+            <span>BUY</span>
+          </a>
+        </Link>
         <br />
         <br />
         <b>Discount box</b>
@@ -34,7 +55,11 @@ const francescaGotti = ({ router }) => {
         <br />
         400 Eur, 30 Pieces
         <br />
-        <span>BUY</span>
+        <Link href="/connect">
+          <a>
+            <span>BUY</span>
+          </a>
+        </Link>
         <br />
         <br />
         <b>Discard box</b>
@@ -44,7 +69,11 @@ const francescaGotti = ({ router }) => {
         <br />
         160 Eur, 30 Pieces
         <br />
-        <span>BUY</span>
+        <Link href="/connect">
+          <a>
+            <span>BUY</span>
+          </a>
+        </Link>
       </article>
       <style jsx>{`
         article {
