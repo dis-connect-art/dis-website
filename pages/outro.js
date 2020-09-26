@@ -2,9 +2,6 @@ const francescaGotti = ({ router, device }) => {
   return (
     <section>
       <article>
-        DIS- can also be found at @darklands_berlin & @avant_ist &
-        @stefanosaccani
-        <br />
         DIS- was created by:
         <div>
           <p>
@@ -15,9 +12,21 @@ const francescaGotti = ({ router, device }) => {
             <br />
             Parma
             <br />
-            @Francesca_Gotti
+            <a
+              href="https://www.instagram.com/francesca.gotti/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @francesca.gotti
+            </a>
             <br />
-            @Gottistudio
+            <a
+              href="https://www.instagram.com/gottistudio/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @gottistudio
+            </a>
           </p>
           <p>
             <b>Omer Ipekci</b>
@@ -27,9 +36,21 @@ const francescaGotti = ({ router, device }) => {
             <br />
             Istanbul
             <br />
-            @Omer pekji
+            <a
+              href="https://www.instagram.com/omer_pekji/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @omer_pekji
+            </a>
             <br />
-            @PEKJI_PARFUM
+            <a
+              href="https://www.instagram.com/pekji_parfum/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @pekji_parfum
+            </a>
           </p>
           <p>
             <b>Francesco Romero</b>
@@ -39,9 +60,21 @@ const francescaGotti = ({ router, device }) => {
             <br />
             Somewhere in Italy
             <br />
-            @alfarom70
+            <a
+              href="https://www.instagram.com/alfarom70/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @alfarom70
+            </a>
             <br />
-            @romeroimages_official
+            <a
+              href="https://www.instagram.com/romeroimages_official"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @romeroimages_official
+            </a>
           </p>
         </div>
       </article>
