@@ -27,26 +27,10 @@ const francescaGotti = ({ router }) => {
         </a>
         <br />
         <br />
-        DIS-BOOK
+        Soft cover
         <br />
-        <br />
-        A4, 100gsm, archival offset printing.
-        <br />
-        <br />
-        120 Eur, 200 Pieces
-        <br />
-        <br />
-        <Link href="/connect">
-          <a>
-            <span>BUY</span>
-          </a>
-        </Link>
+        Limited to 200 Pieces
       </article>
-      <style jsx>{`
-        article {
-          width: 260px; /* overwrites stdArticle width */
-        }
-      `}</style>
     </section>
   );
 };

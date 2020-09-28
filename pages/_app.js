@@ -59,13 +59,13 @@ const mainVars = {
 
 const { allRoutes, breakpoints } = getConfig().publicRuntimeConfig;
 
-let mobileBGColors = {
+let bgColors = {
   [allRoutes[0]]: "#e1e1e1",
-  [allRoutes[1]]: "#a7a180",
-  [allRoutes[2]]: "#e4e939",
-  [allRoutes[3]]: "#6f7d85",
+  [allRoutes[1]]: "#e1e1e1",
+  [allRoutes[2]]: "#e3e839",
+  [allRoutes[3]]: "#ff8cab",
   [allRoutes[4]]: "#ffffff",
-  [allRoutes[5]]: "#8b7b78",
+  [allRoutes[5]]: "#e1e1e1",
 };
 
 function useWindowSize() {
@@ -111,6 +111,9 @@ function MyApp({ Component, pageProps, router }) {
     setRouteIndex(allRoutes.indexOf(router.route));
   }, [router.route]);
 
+  let bgImgFolder = device === "mobile" ? "/mobile-bg" : "/bg";
+  let bgImgName = "/i-" + router.route.replace("/", "") + ".png";
+  let bgImgSrc = "assets" + bgImgFolder + bgImgName;
   return (
     <div ref={yScrollContainer}>
       <Head>
@@ -120,7 +123,7 @@ function MyApp({ Component, pageProps, router }) {
       <Circle draggable={false} direction={direction} route={router.route} />
 
       <motion.main
-        style={{ backgroundColor: mobileBGColors[router.route] }}
+        style={{ backgroundColor: bgColors[router.route] }}
         className="main"
         pan="y"
         onPan={(e, { offset }) => {
@@ -163,7 +166,8 @@ function MyApp({ Component, pageProps, router }) {
           >
             <img
               draggable={false}
-              src={"assets/bg-" + router.route.replace("/", "") + ".jpg"}
+              className={router.route === "/outro" ? "bg-cover" : "bg-contain"}
+              src={bgImgSrc}
               alt="background image"
             />
           </motion.div>
