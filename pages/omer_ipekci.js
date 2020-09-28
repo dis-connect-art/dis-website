@@ -13,71 +13,36 @@ const francescaGotti = ({ router }) => {
         >
           @Omer Ipekci
         </a>{" "}
-        created three “perfumes”:
+        created three wearable scents:
         <br />
         <br />
         DIS-1 (Decay)
         <br />
-        DIS-2 (Concrete)
+        Notes: Angelica root absolute, costus root co2 extract, synthetic
+        saffron, synthetic jasmine, castoreum, vanilla, plastic accord, ...
+        <br /> <br />
+        DIS-2 (Concrete) Notes: <br />
+        Violet, lily-of-the-valley, galbanum, mushroom alcohol, ozone, sheer
+        woods, musk
+        <br /> <br />
+        DIS-3 (Paradox) <br />
+        Notes: Nagarmotha, Geranium, Camphor, Patchouli, Vetiver, Iris, Ozone
         <br />
-        DIS-3 (Paradox)
         <br />
-        <br />
-        These are available for purchase as:
-        <br />
-        <br />
-        <b>Display box</b>
-        <br />
-        All three perfumes in handmade case designed by{" "}
+        These are available for purchase in a limited amount of handmade
+        glebanite cases designed by{" "}
         <a
           href="https://www.instagram.com/francesca.gotti/"
           target="_blank"
           rel="noopener noreferrer"
         >
           @Francesca Gotti
-        </a>
-        .
-        <br />
-        <br />
-        650Eur, 15 Pieces
-        <br />
-        <Link href="/connect">
-          <a>
-            <span>BUY</span>
-          </a>
-        </Link>
-        <br />
-        <br />
-        <b>Discount box</b>
-        <br />
-        All three perfumes in circular Korrvu packaging
-        <br />
-        <br />
-        400 Eur, 30 Pieces
-        <br />
-        <Link href="/connect">
-          <a>
-            <span>BUY</span>
-          </a>
-        </Link>
-        <br />
-        <br />
-        <b>Discard box</b>
-        <br />
-        One perfume in circular Korrvu packaging.
-        <br />
-        <br />
-        160 Eur, 30 Pieces
-        <br />
-        <Link href="/connect">
-          <a>
-            <span>BUY</span>
-          </a>
-        </Link>
+        </a>{" "}
+        or simple Korrvu cardboard packaging.
       </article>
       <style jsx>{`
         article {
-          width: 220px;
+          width: 200px; /* needs to be thinner than styles.article */
         }
       `}</style>
     </section>

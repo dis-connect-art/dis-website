@@ -28,9 +28,6 @@ const circleVariants = {
 const legitRoutes = [allRoutes[0], allRoutes[1], allRoutes[2], allRoutes[3]];
 
 const Circle = ({ direction, route }) => {
-  let DIS = <h3>DIS-</h3>;
-  if (route === allRoutes[3]) DIS = <img src="/assets/fg-3.png" />;
-
   let bgColor;
   switch (route) {
     case allRoutes[0]:
@@ -62,7 +59,13 @@ const Circle = ({ direction, route }) => {
           className="circle-text"
           transition={{ type: "tween" }}
         >
-          {DIS}
+          <img
+            src={
+              route === allRoutes[3]
+                ? "/assets/fg/fg-3.png"
+                : "/assets/fg/fg-dis.png"
+            }
+          />
         </motion.div>
       </AnimatePresence>
 
@@ -71,28 +74,18 @@ const Circle = ({ direction, route }) => {
           position: absolute;
           top: 50%;
           left: 50%;
-          width: 200px;
-          height: 200px;
+          width: 170px;
+          height: 170px;
           border-radius: 50%;
           transform: translate(-50%, -50%);
           z-index: 1;
           overflow: hidden;
         }
         
-        .circle h3 {
-          user-select: none;
-          position: absolute;
-          top: -25px;
-          left: 0%;
-          width: 100%;
-          text-align: center;
-          font-size: 5rem;
-        }
-        
         .circle img {
           position: absolute;
-          width: 200px;
-          height: 200px;
+          width: 170px;
+          height: 170px;
         }
         
         @media screen and (max-width: 480px) {

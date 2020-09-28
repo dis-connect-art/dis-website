@@ -4,9 +4,6 @@ const francescaGotti = ({ router }) => {
   return (
     <section>
       <article className={styles.article}>
-        DIS-PROOF
-        <br />
-        <br />
         <a
           href="https://www.instagram.com/francesca.gotti/"
           target="_blank"
@@ -32,16 +29,22 @@ const francescaGotti = ({ router }) => {
           rel="noopener noreferrer"
         >
           @Omer Ipekci
-        </a>{" "}
-        inspired by these photos <br />=<br />
-        DIS-PROOF An evidence to be stored in Boros Berlin.
+        </a>
+        <br />
+        =
+        <br />
+        An evidence of DIS to be isolated forever
         <br />
         <br />
-        <span>NEVER BEEN IN STOCK</span>
+        .
+        <br />
+        <br />
+        Francesca also created 15 glebanite homes for the fragrances, complete
+        with a huge roll of paper.
       </article>
       <style jsx>{`
         article {
-          width: 150px;
+          width: 150px; /* needs to be thinner than styles.article */
         }
       `}</style>
     </section>
