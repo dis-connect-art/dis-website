@@ -180,7 +180,7 @@ const Connect = ({ router }) => {
               name="message"
               id="message"
               cols="1"
-              rows="8"
+              rows="5"
               placeholder="type your message."
               onChange={(e) => setMessage(e.target.value.trim())}
             ></textarea>
@@ -321,6 +321,7 @@ const Connect = ({ router }) => {
           width: 100%;
           height: 100%;
           padding: 0 1rem;
+          background: white;
         }
 
         textarea {
@@ -359,12 +360,38 @@ const Connect = ({ router }) => {
           .product-pics,
           form {
             width: 90%;
-            margin: 1rem auto;
+            margin: 0.5rem auto;
+          }
+
+          .product-pics {
+            margin-top: -0.5rem;
+            margin-bottom: 0;
+          }
+
+          .product-pics div {
+            margin-bottom: 0.5rem;
           }
 
           form * {
             width: 100%;
             font-size: 0.6rem;
+            margin-bottom: 0.6rem;
+          }
+
+          input,
+          textarea,
+          select {
+            padding: 0.5rem;
+          }
+
+          input,
+          .select-wrapper {
+            height: 2rem;
+          }
+
+          .select-wrapper::after {
+            font-size: 0.5rem;
+            right: 0.5rem;
           }
         }
       `}</style>
