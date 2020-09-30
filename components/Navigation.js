@@ -132,6 +132,7 @@ const Navigation = ({ route }) => {
             font-size: 1.5rem;
             display: inline-block;
             padding: 0;
+            user-select: none;
           }
         }
       `}</style>

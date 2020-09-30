@@ -79,10 +79,10 @@ const Connect = ({ router }) => {
     <section>
       {clickedImage ? (
         <div className="big-image">
-          <span onClick={() => setClickedImage(null)}>✖︎</span>
           <img
             src={clickedImage.replace(".jpg", "-big.jpg")}
             alt={clickedImage.replace(".jpg", "").replace("/assets/products/")}
+            onClick={() => setClickedImage(null)}
           />
         </div>
       ) : (
@@ -260,19 +260,6 @@ const Connect = ({ router }) => {
           overflow: hidden;
         }
 
-        .big-image span {
-          position: absolute;
-          cursor: pointer;
-          top: 5%;
-          right: 5%;
-          font-size: 3rem;
-          z-index: 3;
-        }
-
-        .big-image span:hover {
-          color: #ff8cab;
-        }
-
         .big-image img {
           position: absolute;
           top: 0;
@@ -378,13 +365,7 @@ const Connect = ({ router }) => {
 
           form * {
             width: 100%;
-            font-size: 0.8rem;
-          }
-
-          .big-image span {
-            top: 3%;
-            right: 6%;
-            font-size: 2rem;
+            font-size: 0.6rem;
           }
         }
       `}</style>
