@@ -33,9 +33,9 @@ export default async (req, res) => {
     <div>
       <p>The following person used Dis-Connect page to get in touch. Here's all the information they provided:</p>
       <br>
-      <p><b>Name:</b> ${name},</p>
-      <p><b>Email:</b> ${email},</p>
-      <p><b>Requested Product:</b> ${order},</p>
+      <p><b>Name:</b> ${name}</p>
+      <p><b>Email:</b> ${email}</p>
+      <p><b>Requested Product:</b> ${order}</p>
       <p><b>Message:</b> ${
         message && message !== "" ? message : "<no-message-provided>"
       }</p>

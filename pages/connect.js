@@ -2,17 +2,15 @@ import styles from "../styles/SharedStyles.module.css";
 import { useState, useRef, useEffect } from "react";
 
 const PRODUCTS = {
-  gleb: "DIS-1,2,3 perfumes, (Glebanite) = X Eur",
-  korv: "DIS-1,2,3 perfumes (Korrvu) = Z Eur",
-  glebcombo: "DIS-1,2,3 perfumes, (Glebanite) + DIS Book = Y Eur",
-  korvcombo: "DIS-1,2,3 perfumes (Korrvu) + DIS book = T Eur",
-  perfone: "DIS-1 perfume = a Eur",
-  perftwo: "DIS-2 perfume = b Eur",
-  perfthree: "DIS-3 perfume = c Eur",
-  book: "DIS Book = d Eur",
+  korvSingle: "Single scent inside basic Korrvu circular packaging = 140 Eur",
+  korvCombo:
+    "All three scents inside basic Korrvu circular packaging = 400 Eur",
+  glebCombo: "All three scents inside the handmade Glebanite box = 480 Eur",
+  book: "DIS- book = 65 Eur",
+  fullCombo: "Glebanite box including all the scents and the book = 520 Eur",
 };
 
-const francescaGotti = ({ router }) => {
+const Connect = ({ router }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [order, setOrder] = useState(PRODUCTS.gleb);
@@ -20,6 +18,7 @@ const francescaGotti = ({ router }) => {
   const [error, setError] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [clickedImage, setClickedImage] = useState(null);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -78,85 +77,125 @@ const francescaGotti = ({ router }) => {
 
   return (
     <section>
-      <article className={styles.article}>connect</article>
-
-      <div className="product-pics">
-        <img src="/assets/product-book.jpg" alt="" />
-        <img src="/assets/product-glebanite.jpg" alt="" />
-        <img src="/assets/product-korrvu.jpg" alt="" />
-      </div>
-
-      {isSuccess && (
-        <div className="success-box">
-          <span
-            onClick={() => {
-              setIsSuccess(false);
-              window.location.href = "/connect"; // refresh the page to reset all state
-            }}
-          >
-            ✖︎
-          </span>
-          <h4>SUCCESS!</h4>
-          <p>
-            Thanks! Your request has been sent to{" "}
-            <a href="mailto:dis.connect.art@gmail.com">
-              dis.connect.art@gmail.com
-            </a>
-            ! We will get in touch soon.
-          </p>
+      {clickedImage ? (
+        <div className="big-image">
+          <span onClick={() => setClickedImage(null)}>✖︎</span>
+          <img
+            src={clickedImage.replace(".jpg", "-big.jpg")}
+            alt={clickedImage.replace(".jpg", "").replace("/assets/products/")}
+          />
         </div>
+      ) : (
+        <>
+          <article className={styles.article}>connect</article>
+
+          <div className="product-pics">
+            <div>
+              <img
+                src="/assets/products/pr1.jpg"
+                alt="product one"
+                onClick={(e) => setClickedImage(e.target.src)}
+              />
+              <img
+                src="/assets/products/bundle.jpg"
+                alt="bundle"
+                onClick={(e) => setClickedImage(e.target.src)}
+              />
+              <img
+                src="/assets/products/book.jpg"
+                alt="book"
+                onClick={(e) => setClickedImage(e.target.src)}
+              />
+            </div>
+            <div>
+              <img
+                src="/assets/products/discard.jpg"
+                alt="discard"
+                onClick={(e) => setClickedImage(e.target.src)}
+              />
+              <img
+                src="/assets/products/discount.jpg"
+                alt="discount"
+                onClick={(e) => setClickedImage(e.target.src)}
+              />
+              <img
+                src="/assets/products/glebanite.jpg"
+                alt="glebanite"
+                onClick={(e) => setClickedImage(e.target.src)}
+              />
+            </div>
+          </div>
+
+          {isSuccess && (
+            <div className="success-box">
+              <span
+                onClick={() => {
+                  setIsSuccess(false);
+                  window.location.href = "/connect"; // refresh the page to reset all state
+                }}
+              >
+                ✖︎
+              </span>
+              <h4>SUCCESS!</h4>
+              <p>
+                Thanks! Your request has been sent to{" "}
+                <a href="mailto:dis.connect.art@gmail.com">
+                  dis.connect.art@gmail.com
+                </a>
+                ! We will get in touch soon.
+              </p>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit}>
+            <input
+              ref={nameRef}
+              type="text"
+              name="name"
+              placeholder="name"
+              onChange={(e) => setName(e.target.value.trim())}
+            />
+            <input
+              ref={emailRef}
+              type="email"
+              name="email"
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value.toLowerCase().trim())}
+            />
+            <div className="select-wrapper">
+              <select
+                className="select"
+                name="order"
+                id="order"
+                onChange={(e) => setOrder(PRODUCTS[e.target.value])}
+              >
+                <option value="korvSingle">{PRODUCTS.korvSingle}</option>
+                <option value="korvCombo">{PRODUCTS.korvCombo}</option>
+                <option value="glebCombo">{PRODUCTS.glebCombo}</option>
+                <option value="book">{PRODUCTS.book}</option>
+                <option value="fullCombo">{PRODUCTS.fullCombo}</option>
+              </select>
+            </div>
+            <textarea
+              name="message"
+              id="message"
+              cols="1"
+              rows="8"
+              placeholder="type your message."
+              onChange={(e) => setMessage(e.target.value.trim())}
+            ></textarea>
+            <button type="submit" disabled={isProcessing || isSuccess}>
+              {isProcessing ? "Processing..." : "Make A Request"}
+            </button>
+            {error && <div className="error-box">{error}</div>}
+          </form>
+        </>
       )}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          ref={nameRef}
-          type="text"
-          name="name"
-          placeholder="name"
-          onChange={(e) => setName(e.target.value.trim())}
-        />
-        <input
-          ref={emailRef}
-          type="email"
-          name="email"
-          placeholder="email"
-          onChange={(e) => setEmail(e.target.value.toLowerCase().trim())}
-        />
-        <div className="select-wrapper">
-          <select
-            className="select"
-            name="order"
-            id="order"
-            onChange={(e) => setOrder(PRODUCTS[e.target.value])}
-          >
-            <option value="gleb">{PRODUCTS.gleb}</option>
-            <option value="glebcombo">{PRODUCTS.glebcombo}</option>
-            <option value="korv">{PRODUCTS.korv}</option>
-            <option value="korvcombo">{PRODUCTS.korvcombo}</option>
-            <option value="perfone">{PRODUCTS.perfone}</option>
-            <option value="perftwo">{PRODUCTS.perftwo}</option>
-            <option value="perfthree">{PRODUCTS.perfthree}</option>
-            <option value="book">{PRODUCTS.book}</option>
-          </select>
-        </div>
-        <textarea
-          name="message"
-          id="message"
-          cols="1"
-          rows="8"
-          placeholder="type your message."
-          onChange={(e) => setMessage(e.target.value.trim())}
-        ></textarea>
-        <button type="submit" disabled={isProcessing || isSuccess}>
-          {isProcessing ? "Processing..." : "Make A Request"}
-        </button>
-        {error && <div className="error-box">{error}</div>}
-      </form>
 
       <style jsx>{`
         .success-box {
           position: absolute;
-          z-index: 1000;
+          z-index: 1;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
@@ -192,8 +231,16 @@ const francescaGotti = ({ router }) => {
           width: 60%;
           margin: 0 auto;
           display: flex;
-          justify-content: space-between;
+          flex-direction: column;
           margin-top: -2.5rem;
+        }
+
+        .product-pics div {
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-bottom: 1rem;
         }
 
         .product-pics img {
@@ -201,9 +248,44 @@ const francescaGotti = ({ router }) => {
           border: 1px solid lightgray;
         }
 
+        .big-image {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: white;
+          z-index: 2;
+          width: 100vw;
+          height: 100vh;
+          overflow: hidden;
+        }
+
+        .big-image span {
+          position: absolute;
+          cursor: pointer;
+          top: 5%;
+          right: 5%;
+          font-size: 3rem;
+          z-index: 3;
+        }
+
+        .big-image span:hover {
+          color: #ff8cab;
+        }
+
+        .big-image img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+
         form {
           width: 60%;
-          margin: 2rem auto;
+          margin: 0 auto;
         }
 
         form * {
@@ -268,7 +350,9 @@ const francescaGotti = ({ router }) => {
           border: none;
           background-color: black;
           color: white;
-          float: right;
+          display: block;
+          margin-left: auto;
+          margin-right: 0;
         }
 
         button:disabled {
@@ -296,10 +380,16 @@ const francescaGotti = ({ router }) => {
             width: 100%;
             font-size: 0.8rem;
           }
+
+          .big-image span {
+            top: 3%;
+            right: 6%;
+            font-size: 2rem;
+          }
         }
       `}</style>
     </section>
   );
 };
 
-export default francescaGotti;
+export default Connect;
