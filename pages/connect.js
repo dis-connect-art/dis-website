@@ -241,10 +241,13 @@ const Connect = ({ router }) => {
           flex-direction: row;
           justify-content: space-between;
           margin-bottom: 1rem;
+          width: 100%;
+          height: 160px;
         }
 
         .product-pics img {
           width: 32%;
+          object-fit: contain;
           border: 1px solid lightgray;
         }
 
@@ -370,6 +373,7 @@ const Connect = ({ router }) => {
 
           .product-pics div {
             margin-bottom: 0.5rem;
+            height: 80px;
           }
 
           form * {

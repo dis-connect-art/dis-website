@@ -1,8 +1,6 @@
 import styles from "../styles/SharedStyles.module.css";
-import Link from "next/link";
-// TODO: Buy
 
-const francescaGotti = ({ router }) => {
+const omerIpekci = ({ router }) => {
   return (
     <section>
       <article className={styles.article}>
@@ -49,4 +47,4 @@ const francescaGotti = ({ router }) => {
   );
 };
 
-export default francescaGotti;
+export default omerIpekci;
