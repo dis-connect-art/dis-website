@@ -119,6 +119,10 @@ function MyApp({ Component, pageProps, router }) {
       <Head>
         <title>Disproof</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
       </Head>
       <Circle draggable={false} direction={direction} route={router.route} />
 
