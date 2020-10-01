@@ -13,6 +13,7 @@ body {
   overflow-x: hidden;
   overscroll-behavior: none;
   position: relative;
+  touch-action: none;
 }
 
 ul,
@@ -63,7 +64,6 @@ a {
   height: 100%;
   left: 0px;
   top: 0px;
-  touch-action: none;
 }
 
 @media screen and (max-width: 480px) {
