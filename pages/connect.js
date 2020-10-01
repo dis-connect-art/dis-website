@@ -13,7 +13,7 @@ const PRODUCTS = {
 const Connect = ({ router }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [order, setOrder] = useState(PRODUCTS.gleb);
+  const [order, setOrder] = useState(PRODUCTS.korvSingle);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
@@ -142,7 +142,7 @@ const Connect = ({ router }) => {
                 <a href="mailto:dis.connect.art@gmail.com">
                   dis.connect.art@gmail.com
                 </a>
-                ! We will get in touch soon.
+                . We will get in touch soon.
               </p>
             </div>
           )}
@@ -219,9 +219,6 @@ const Connect = ({ router }) => {
           cursor: pointer;
           width: 20px;
           height: 20px;
-          color: indianred;
-          border: 1px solid indianred;
-          border-radius: 50%;
           position: absolute;
           right: 1rem;
           top: 1rem;
@@ -396,6 +393,18 @@ const Connect = ({ router }) => {
           .select-wrapper::after {
             font-size: 0.5rem;
             right: 0.5rem;
+          }
+        }
+
+        @media screen and (max-height: 540px) {
+          .product-pics div:last-of-type {
+            display: none;
+          }
+        }
+
+        @media screen and (max-height: 440px) {
+          .product-pics {
+            display: none;
           }
         }
       `}</style>
