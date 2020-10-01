@@ -93,10 +93,10 @@ function useWindowSize() {
 function MyApp({ Component, pageProps, router }) {
   const [routeIndex, setRouteIndex] = useState(0);
   const [direction, setDirection] = useState("next");
-  const windowSize = useWindowSize();
-  const [device, setDevice] = useState("mobile");
   const yScrollContainer = useRef();
 
+  const windowSize = useWindowSize();
+  const [device, setDevice] = useState("mobile");
   useEffect(() => {
     if (windowSize.width < breakpoints.mobile) {
       setDevice("mobile");
