@@ -117,7 +117,7 @@ function MyApp({ Component, pageProps, router }) {
   return (
     <div ref={yScrollContainer}>
       <Head>
-        <title>Disproof</title>
+        <title>Dis-</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="viewport"
@@ -129,10 +129,10 @@ function MyApp({ Component, pageProps, router }) {
       <motion.main
         style={{ backgroundColor: bgColors[router.route] }}
         className="main"
-        pan="y"
-        onPan={(e, { offset }) => {
-          document.body.scrollBy(0, -offset.y);
-        }}
+        // pan="y"
+        // onPan={(e, { offset }) => {
+        //   document.body.scrollBy(0, -offset.y);
+        // }}
         drag="true"
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={1}

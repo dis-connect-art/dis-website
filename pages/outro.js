@@ -94,7 +94,9 @@ const francescaGotti = ({ router, device }) => {
           article {
             width: 100%;
             padding: 0 2.5rem;
-            margin: 5rem auto;
+            margin: 4rem auto;
+            font-size: 0.8rem;
+            line-height: 1rem;
           }
 
           div {
@@ -103,6 +105,16 @@ const francescaGotti = ({ router, device }) => {
 
           p {
             margin: 1rem 0;
+          }
+        }
+
+        @media screen and (min-height: 620px) {
+          article {
+            width: 100%;
+            padding: 0 2.5rem;
+            margin: 5rem auto;
+            font-size: 0.9rem;
+            line-height: 1.2rem;
           }
         }
       `}</style>
