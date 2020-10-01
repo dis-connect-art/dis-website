@@ -108,7 +108,7 @@ const francescaGotti = ({ router, device }) => {
           }
         }
 
-        @media screen and (min-height: 620px) {
+        @media screen and (max-width: 480px) and (min-height: 620px) {
           article {
             width: 100%;
             padding: 0 2.5rem;

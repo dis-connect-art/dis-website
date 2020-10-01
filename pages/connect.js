@@ -396,13 +396,13 @@ const Connect = ({ router }) => {
           }
         }
 
-        @media screen and (max-height: 540px) {
+        @media screen and (max-width: 480px) and (max-height: 540px) {
           .product-pics div:last-of-type {
             display: none;
           }
         }
 
-        @media screen and (max-height: 440px) {
+        @media screen and (max-width: 480px) and (max-height: 440px) {
           .product-pics {
             display: none;
           }
