@@ -63,7 +63,7 @@ const Connect = ({ router }) => {
           setIsSuccess(true);
         } else {
           alert(
-            "The request failed for an unknown reason! We are sorry for this. Please feel free to send us a message via dis.connect.art@fmail.com if you continue to experience this issue"
+            "The request failed for an unknown reason! We are sorry for this. Please feel free to send us a message via dis.connect.art@gmail.com if you continue to experience this issue"
           );
           setIsProcessing(false);
         }
