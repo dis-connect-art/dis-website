@@ -39,7 +39,7 @@ const francescaGotti = ({ router }) => {
         .
         <br />
         <br />
-        Francesca also created 15 glebanite homes for the fragrances, complete
+        Francesca also created 30 glebanite homes for the fragrances, complete
         with a huge roll of paper.
       </article>
       <style jsx>{`
