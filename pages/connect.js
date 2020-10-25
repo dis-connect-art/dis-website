@@ -6,8 +6,8 @@ const PRODUCTS = {
   korvCombo:
     "All three scents inside basic Korrvu circular packaging = 400 Eur",
   glebCombo: "All three scents inside the handmade Glebanite box = 480 Eur",
-  book: "DIS- book = 65 Eur",
-  fullCombo: "Glebanite box including all the scents and the book = 520 Eur",
+  book: "DIS- book = 45 Eur",
+  fullCombo: "Glebanite box including all the scents and the book = 510 Eur",
 };
 
 const Connect = ({ router }) => {
